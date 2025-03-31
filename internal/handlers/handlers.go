@@ -14,14 +14,14 @@ import (
 
 // Для корневого эндпоинта / нужно реализовать хендлер, который возвращает HTML из файла index.html.
 func HtmlHandle(resp http.ResponseWriter, req *http.Request) {
-	root, err := os.OpenRoot("/home/kristina/Dev/sprint6/final/Sprint6")
+	root, err := os.OpenRoot("../internal")
 	if err != nil {
 		http.Error(resp, "внутренняя ошибка", http.StatusInternalServerError)
 		return
 	}
 	defer root.Close()
 
-	data, err := os.ReadFile("/home/kristina/Dev/sprint6/final/Sprint6/index.html")
+	data, err := os.ReadFile("../index.html")
 	if err != nil {
 		http.Error(resp, "ошибка при загрузке страницы", http.StatusInternalServerError)
 		return
